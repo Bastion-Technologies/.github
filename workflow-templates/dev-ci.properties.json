@@ -1,0 +1,7 @@
+{
+    "name": "CI/CD Dev",
+    "description": "Deploy in AWS Dev environment",
+    "filePatterns": [
+        "^deploy.sh$"
+    ]
+}
