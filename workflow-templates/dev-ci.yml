@@ -18,7 +18,7 @@ jobs:
     name: Build And Deploy
 
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     if: ${{ github.actor != 'dependabot[bot]' }}
 
     steps:
