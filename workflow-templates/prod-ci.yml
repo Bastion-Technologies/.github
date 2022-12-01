@@ -1,0 +1,40 @@
+name: Deploy on Prod
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: read
+
+env:
+  REGION: eu-west-1 # Prod Region
+
+jobs:
+  deploy:
+    uses: Bastion-Technologies/github_workflows/.github/workflows/aws-ci.yml@main
+    with:
+      region: us-east-1
+    secrets:
+      AWS_CICD_ROLE: ${{ secrets.AWS_CICD_PROD_ROLE }}
+      AWS_CICD_ACCESS_KEY: ${{ secrets.AWS_CICD_ACCESS_KEY }}
+      AWS_CICD_SECRET_KEY: ${{ secrets.AWS_CICD_SECRET_KEY }}
+
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: "deployment~${{ github.ref }}"
+          body: "automatic release"
+          draft: false
+          prerelease: false
