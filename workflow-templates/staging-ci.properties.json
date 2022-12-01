@@ -1,0 +1,10 @@
+{
+    "name": "Deploy on Staging",
+    "description": "Deploy in AWS Staging environment",
+    "categories": [
+        "Continuous integration"
+    ],
+    "filePatterns": [
+        "^deploy.sh$"
+    ]
+}
