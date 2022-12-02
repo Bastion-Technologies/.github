@@ -2,7 +2,7 @@ name: Deploy on Prod
 on:
   push:
     tags:
-      - "[0-9]+.[0-9]+.[0-9]+"
+      - "prod-[0-9]+.[0-9]+.[0-9]+"
 
 permissions:
   contents: write
@@ -32,6 +32,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: "deployment~${{ github.ref }}"
-          body: "automatic release"
+          body: "Automatic production release"
           draft: false
           prerelease: false
