@@ -9,14 +9,11 @@ permissions:
   pull-requests: write
   packages: read
 
-env:
-  REGION: eu-west-1 # Prod Region
-
 jobs:
   deploy:
     uses: Bastion-Technologies/github_workflows/.github/workflows/aws-ci.yml@main
     with:
-      region: us-east-1
+      region: eu-west-1
     secrets:
       AWS_CICD_ROLE: ${{ secrets.AWS_CICD_PROD_ROLE }}
       AWS_CICD_ACCESS_KEY: ${{ secrets.AWS_CICD_ACCESS_KEY }}
