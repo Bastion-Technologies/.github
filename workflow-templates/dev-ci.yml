@@ -22,3 +22,11 @@ jobs:
       AWS_CICD_ROLE: ${{ secrets.AWS_CICD_DEV_ROLE }}
       AWS_CICD_ACCESS_KEY: ${{ secrets.AWS_CICD_ACCESS_KEY }}
       AWS_CICD_SECRET_KEY: ${{ secrets.AWS_CICD_SECRET_KEY }}
+  auto-merge-dependabot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ahmadnassri/action-dependabot-auto-merge@v2
+        with:
+          target: minor
+          github-token: ${{ secrets.GITHUB_TOKEN }}
