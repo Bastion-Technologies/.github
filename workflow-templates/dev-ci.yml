@@ -16,6 +16,7 @@ env:
 jobs:
   auto-merge-dependabot:
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     steps:
       - uses: actions/checkout@v2
       - uses: ahmadnassri/action-dependabot-auto-merge@v2
