@@ -14,14 +14,6 @@ env:
   REGION: us-east-1 # Dev Region
 
 jobs:
-  deploy:
-    uses: Bastion-Technologies/github_workflows/.github/workflows/aws-ci.yml@main
-    with:
-      region: us-east-1
-    secrets:
-      AWS_CICD_ROLE: ${{ secrets.AWS_CICD_DEV_ROLE }}
-      AWS_CICD_ACCESS_KEY: ${{ secrets.AWS_CICD_ACCESS_KEY }}
-      AWS_CICD_SECRET_KEY: ${{ secrets.AWS_CICD_SECRET_KEY }}
   auto-merge-dependabot:
     runs-on: ubuntu-latest
     steps:
@@ -30,3 +22,11 @@ jobs:
         with:
           target: minor
           github-token: ${{ secrets.GITHUB_TOKEN }}
+  deploy:
+    uses: Bastion-Technologies/github_workflows/.github/workflows/aws-ci.yml@main
+    with:
+      region: us-east-1
+    secrets:
+      AWS_CICD_ROLE: ${{ secrets.AWS_CICD_DEV_ROLE }}
+      AWS_CICD_ACCESS_KEY: ${{ secrets.AWS_CICD_ACCESS_KEY }}
+      AWS_CICD_SECRET_KEY: ${{ secrets.AWS_CICD_SECRET_KEY }}
