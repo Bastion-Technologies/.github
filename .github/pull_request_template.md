@@ -17,3 +17,10 @@ Fixes # (notion ticket ID)
 
 # How Has This Been Tested?
 <!-- describe how the feature was testing -->
+
+# Checks
+<!-- If your PR is a fix or a small improvement, it usually doesn't need an ADR.
+     However for a feature or a big improvement, you should document why we do it
+     for traceability.
+-->
+- [ ] This PR doesn´t need an ADR
